@@ -5,6 +5,7 @@ function getMessages() {
     var userId = location.href.split('?')[1].split('=').pop();
 
     fetch('https://rocky-taiga-63970.herokuapp.com/' + userId + '/posts')
+    
     .then(function(response) {
         return response.json();
     })

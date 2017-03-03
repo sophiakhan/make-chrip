@@ -13,14 +13,17 @@ function signIn() {
             username: usernameHeader,
             password: passwordHeader
         })
+        
     })
         .then(function(response) {
             return response.json();
-        })
+        }) 
         .then(function(response) {
+            console.log(response);
             if (response.token) {
-                sessionStorage.setItem('user', JSON.stringify(response));
+                sessionStorage.setItem('token', response.token);
                 location.href = 'users.html';
+
             }
             else {
                 alert('Error Occurred.');
