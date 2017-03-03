@@ -7,6 +7,7 @@
 
 body {
     background: url(../img/sos.png);
+    font-family: 'Raleway', sans-serif;
 }
 
 header {
@@ -20,13 +21,26 @@ header #header-logo {
     height: 60px;
 }
 
-header #button-login {
+#username-header,
+#password-header {
+    margin-top: 20px;
+}
+
+header #button-login,
+header #button-logout  {
     margin: 20px 20px 0px 0px;
 }
 
-.signup .panel-heading {
+.signup .panel-heading,
+.user-list .panel-heading,
+.message-list .panel-heading {
     background: rgb(231, 157, 0);
     color: white;
+}
+
+.user-list,
+.message-list {
+    margin-top: 40px;
 }
 
 #user-profile-box {
@@ -35,12 +49,12 @@ header #button-login {
     background: white;
     border: 2px solid lightgrey;
     border-radius: 5px;
-    font-family: 'Raleway', sans-serif;
     text-align: center;
 }
 
 #profile-picture {
     max-height: 100px;
+    max-width: 100px;
     border-radius: 50%;
     margin-top: 20px;
 }

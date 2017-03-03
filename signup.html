@@ -21,7 +21,21 @@
                 </ul>
             </div>
             <div class="col-sm-6 text-right">
-                <button type="button" class="btn btn-warning" id="button-login">Log In</button>
+                <ul class=" login-header list-inline list-unstyled">
+                    <li>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="username-header" placeholder="Username" required>
+                        </div>
+                    </li>
+                    <li>
+                         <div class="form-group">
+                            <input type="password" class="form-control" id="password-header" maxlength="72" placeholder="Password" required>
+                        </div>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-warning" id="button-login">Log In</button>
+                    </li>
+                </ul>
             </div>
         </div>
     </header>
@@ -33,7 +47,7 @@
                 <div class="col-sm-6 col-sm-offset-3">
                     <div class="panel panel-default">
                         <div class="panel-heading text-center">
-                            <h4>Sign In</h4>
+                            <h4>Sign Up</h4>
                         </div>
                         <div class="panel-body">
                                 <div class="form-group">
@@ -49,6 +63,11 @@
                                 <div class="form-group">
                                     <label for="username">Username</label>
                                     <input type="text" class="form-control" id="username" placeholder="Username" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" required>
                                 </div>
 
                                 <div class="form-group">
@@ -73,6 +92,7 @@
         </div>
     </section>
 
-    <script src="js/global.js"></script>
+    <script src="js/signup.js"></script>
+    <script src="js/signin.js"></script>
 </body>
 </html>

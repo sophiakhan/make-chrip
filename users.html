@@ -21,7 +21,7 @@
                 </ul>
             </div>
             <div class="col-sm-6 text-right">
-                <button type="button" class="btn btn-warning" id="button-login">Log In</button>
+                <button type="button" class="btn btn-warning" id="button-logout">Log Out</button>
             </div>
         </div>
     </header>
@@ -32,7 +32,7 @@
             <div class="col-sm-3">
                 <ul class="list-unstyled" id="user-profile-box">
                     <li><img  id="profile-picture" src="https://unsplash.it/g/200/200?blur" alt="Profile Picture" /></li> <br/>
-                    <li class="text-uppercase"><strong>Username</strong></li><br/>
+                    <li class="text-uppercase" id="username"><strong>Username</strong></li><br/>
                     <li>
                         <div class="input-group">
                             <input id="message" type="text" class="form-control" maxlength="160" placeholder="Send a chirp.">
@@ -42,8 +42,17 @@
                         </div></li>
                 </ul>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-9 user-list">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-center">
+                        <h4>Users</h4>
+                    </div>
+                    <dov class="panel-body">
+                        <ul class="list-group" id="users">
 
+                        </ul>
+                    </dov>
+                </div>
             </div>
         </div>
     </div>
@@ -51,5 +60,6 @@
 
 
     <script src="js/global.js"></script>
+    <script src="js/users.js"></script>
 </body>
 </html>
