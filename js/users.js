@@ -6,6 +6,13 @@ document.querySelector('#users').addEventListener('click', function(e) {
     //location.href = 'messages.html?userId=' + userId;
 });
 
+document.querySelector('#button-logout').addEventListener('click', function() {
+    sessionStorage.clear();
+    location.href = 'signup.html?logout=yes';
+    //sessionStorage.removeItem('token');
+});
+
+
 renderUserProfile();
 getUsers();
 
@@ -24,11 +31,28 @@ function renderUsersList(users) {
 
     users.forEach(function(user) {
         console.log(user)
-        var userList = `<li data-id="${user.id}" class="list-group-item">${user.first_name} ${user.last_name} @${user.username}</li>`;
+        var userList = `<li data-id="${user.id}" class="list-group-item">
+        ${user.first_name} ${user.last_name} @${user.username} 
+        <span class="pull-right">
+            <button type="button" class="btn btn-success" id="button-follow">Follow</button>
+            <button type="button" class="btn btn-danger" id="button-unfollow"><span class="glyphicon glyphicon-remove-circle"></span></button>
+        </span>
+        
+        </li>`;
 
         document.querySelector('#users').innerHTML += userList;
     });
 }
+
+// function renderUsersList(users) {
+
+//     users.forEach(function(user) {
+//         console.log(user)
+//         var userList = `<li data-id="${user.id}" class="list-group-item">${user.first_name} ${user.last_name} @${user.username}</li>`;
+
+//         document.querySelector('#users').innerHTML += userList;
+//     });
+// }
 
 //target username within username box to input logged in user 
 function renderUserProfile() {

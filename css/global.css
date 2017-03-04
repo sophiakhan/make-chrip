@@ -43,6 +43,10 @@ header #button-logout  {
     margin-top: 40px;
 }
 
+.list-group-item > li {
+    margin: 50px;
+}
+
 #user-profile-box {
     margin-top: 40px;
     padding: 0px 20px 40px 20px;

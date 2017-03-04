@@ -1,0 +1,30 @@
+POST /login
+- requires username, password
+- returns id, first_name, last_name, email, photo_url, token
+
+POST /signup
+- requires username, first_name, last_name, email, password
+- returns id, first_name, last_name, email, photo_url, token
+
+GET /timeline (list of current_user's posts and posts of users that current_user is following)
+- requires token
+- returns array of posts; post has keys of id, body, created_at, and user; user has keys of id, username
+^ If you have questions about this, just let me know :)
+
+POST /follow/:id (id is user id to be followed)
+- requires token
+- returns status 200 if user exists, status 400 if user does not exist
+^ This is for the Follow button
+
+POST /unfollow/:id (id is user id to be unfollowed)
+- requires token
+- returns status 200 if user exists, status 400 if user does not exist
+^ This is for the Unfollow button
+
+GET /users (list of all users)
+- returns id, username, first_name, last_name, email, following (array of users the current_user is following), and followable (array of followers for current_user)
+- following and followable keys are id, username, and email
+
+GET /users/:id (id is user whose profile you want)
+- returns id, first_name, last_name, username, email, following, and followable
+- following and followable are the same as above
