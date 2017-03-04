@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
 }
+
 /*img {
     width: 100%;
 }*/
@@ -43,8 +44,13 @@ header #button-logout  {
     margin-top: 40px;
 }
 
-.list-group-item > li {
-    margin: 50px;
+.list-group-item > li,{
+    margin: 20px;
+}
+
+#button-follow,
+#button-unfollow {
+    padding: 1px 12px;
 }
 
 #user-profile-box {

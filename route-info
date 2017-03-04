@@ -28,3 +28,7 @@ GET /users (list of all users)
 GET /users/:id (id is user whose profile you want)
 - returns id, first_name, last_name, username, email, following, and followable
 - following and followable are the same as above
+
+GET /posts/:id
+:id is user id of the user you want to find posts for
+see other user's posts

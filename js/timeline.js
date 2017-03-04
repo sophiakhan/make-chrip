@@ -11,7 +11,7 @@ function getMessages() {
     //var userId = location.href.split('?')[1].split('=').pop();
 
    // fetch('https://rocky-taiga-63970.herokuapp.com/' + userId + '/posts')
-    fetch('https://rocky-taiga-63970.herokuapp.com/posts/) {
+    fetch('https://rocky-taiga-63970.herokuapp.com/posts?id=' + user.id) {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

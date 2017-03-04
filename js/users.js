@@ -3,7 +3,7 @@ var user = JSON.parse(sessionStorage.getItem('user'));
 document.querySelector('#users').addEventListener('click', function(e) {
     var userList = e.target;
     var userId = userList.dataset.id;
-    //location.href = 'messages.html?userId=' + userId;
+    location.href = 'timeline.html?userId=' + id;
 });
 
 document.querySelector('#button-logout').addEventListener('click', function() {
@@ -11,7 +11,6 @@ document.querySelector('#button-logout').addEventListener('click', function() {
     location.href = 'signup.html?logout=yes';
     //sessionStorage.removeItem('token');
 });
-
 
 renderUserProfile();
 getUsers();

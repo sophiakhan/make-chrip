@@ -6,7 +6,7 @@ function signIn() {
 
     fetch('https://rocky-taiga-63970.herokuapp.com/login', { 
         method: 'POST',
-        header: {
+        headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ 
@@ -20,10 +20,10 @@ function signIn() {
         }) 
         .then(function(response) {
             console.log(response);
-            if (response.token) {
-                sessionStorage.setItem('token', response.token);
-                location.href = 'users.html';
 
+            if (response.token) {
+                sessionStorage.setItem('user', JSON.stringify(response));
+                location.href = 'users.html';
             }
             else {
                 alert('Error Occurred.');
