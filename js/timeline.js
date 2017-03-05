@@ -29,8 +29,10 @@ function renderTimeline(messages) {
     messages.forEach(createMessage);
 }
 
-function createMessage(message) {
-    var messageListItem = `<li data-id="${post.id}" class="list-group-item">${post.body}</li>`;
+function createMessage(post) {
+    var messageListItem = `<li data-id="${post.id}" class="list-group-item">
+    ${post.body} by ${post.username}
+    </li>`;
     var currentMessagesHTML = document.querySelector('#messages').innerHTML;
 
     document.querySelector('#messages').innerHTML = messageListItem + currentMessagesHTML;

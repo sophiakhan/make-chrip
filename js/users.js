@@ -65,16 +65,16 @@ function sendMessage() {
 
     document.querySelector('#message').value = '';
 
-    fetch('https://rocky-taiga-63970.herokuapp.com/posts?token=' + 'token', {
+    fetch('https://rocky-taiga-63970.herokuapp.com/posts?token=' + user.token, {
+        method: 'POST',
         headers: {
-            method: 'POST',
             'Content-Type': 'application/json'
         },
 
-        // body: JSON.stringify({
-        //     body: message,
-        //     token: token
-        // })
+        body: JSON.stringify({
+            body: message,
+            //token: token
+        })
     })
         .then(function(response) {
             return response.json();
