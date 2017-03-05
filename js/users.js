@@ -1,10 +1,14 @@
 var user = JSON.parse(sessionStorage.getItem('user'));
+var thing = ''
 
 document.querySelector('#users').addEventListener('click', function(e) {
     var userList = e.target;
     var userId = userList.dataset.id;
-    location.href = 'timeline.html';
+    console.log(userList, userId)
+    // location.href = 'timeline.html';
 });
+
+$('.list-group').css('cursor', 'pointer');
 
 document.querySelector('#button-logout').addEventListener('click', function() {
     sessionStorage.clear();
@@ -18,11 +22,12 @@ document.querySelector('#users-button-back').addEventListener('click', function(
 
 document.querySelector('#sendMessage').addEventListener('click', sendMessage);
 
-document.querySelector('#message').addEventListener('keypress', function(e) {
+document.querySelector('#sendMessage').addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
         sendMessage();
     }
 })
+
 
 renderUserProfile();
 getUsers();
@@ -35,6 +40,7 @@ function getUsers() {
         return response.json();
     })
     .then(function(response) {
+        thing = response;
         renderUsersList(response);
         renderUserProfile(response);
     })
@@ -44,7 +50,7 @@ function getUsers() {
 function renderUsersList(users) {
 
     users.forEach(function(user) {
-        console.log(user)
+        //console.log(user)
         var userList = `<li data-id="${user.id}" class="list-group-item" id="users">
         ${user.first_name} ${user.last_name} @${user.username} 
         <span class="pull-right">
@@ -58,10 +64,52 @@ function renderUsersList(users) {
     });
 }
 
+
+
+
+
 //target username within username box to input logged in user 
 function renderUserProfile() {
     document.querySelector('#profile-picture').src = user.photo_url;
     document.querySelector('#username').innerHTML = user.username;
+}
+
+//follow 
+
+document.querySelector('#button-follow').addEventListener('click', follow)
+
+function follow() {
+    var userIds = document.querySelector('#users').data-id
+
+    fetch('https://rocky-taiga-63970.herokuapp.com/follow/' + userIds), 
+    
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+
+        .then(console.log(response))
+}
+}
+
+//unfollow 
+
+document.querySelector('#button-unfollow').addEventListener('click', unfollow)
+
+function unfollow() {
+    var userIds = document.querySelector('#users').data-id
+
+    fetch('https://rocky-taiga-63970.herokuapp.com/unfollow/' + userIds), 
+    
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+
+        .then(console.log(response))
+}
 }
 
 // send chirp
