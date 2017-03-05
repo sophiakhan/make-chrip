@@ -8,6 +8,10 @@ document.querySelector('#button-logout').addEventListener('click', function() {
     //sessionStorage.removeItem('token');
 });
 
+document.querySelector('#tl-button-back').addEventListener('click', function() {
+    location.href = '/users.html'
+});
+
 function getMessages() {
     var token = sessionStorage.getItem('token');
 
@@ -31,7 +35,7 @@ function renderTimeline(messages) {
 
 function createMessage(post) {
     var messageListItem = `<li data-id="${post.id}" class="list-group-item">
-    ${post.body} by ${post.username}
+    ${post.body} by @${post.user.username}
     </li>`;
     var currentMessagesHTML = document.querySelector('#messages').innerHTML;
 

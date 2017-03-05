@@ -3,13 +3,17 @@ var user = JSON.parse(sessionStorage.getItem('user'));
 document.querySelector('#users').addEventListener('click', function(e) {
     var userList = e.target;
     var userId = userList.dataset.id;
-    location.href = 'timeline.html?userId=' + id;
+    location.href = 'timeline.html';
 });
 
 document.querySelector('#button-logout').addEventListener('click', function() {
     sessionStorage.clear();
     location.href = 'signup.html?logout=yes';
     //sessionStorage.removeItem('token');
+});
+
+document.querySelector('#users-button-back').addEventListener('click', function() {
+    location.href = '/signup.html'
 });
 
 document.querySelector('#sendMessage').addEventListener('click', sendMessage);
@@ -36,11 +40,12 @@ function getUsers() {
     })
 }
 
+// shows list of users who have signed up
 function renderUsersList(users) {
 
     users.forEach(function(user) {
         console.log(user)
-        var userList = `<li data-id="${user.id}" class="list-group-item">
+        var userList = `<li data-id="${user.id}" class="list-group-item" id="users">
         ${user.first_name} ${user.last_name} @${user.username} 
         <span class="pull-right">
             <button type="button" class="btn btn-success" id="button-follow">Follow</button>
@@ -59,13 +64,14 @@ function renderUserProfile() {
     document.querySelector('#username').innerHTML = user.username;
 }
 
+// send chirp
 function sendMessage() {
     var message = document.querySelector('#message').value;
     var token = sessionStorage.getItem('token');
 
     document.querySelector('#message').value = '';
 
-    fetch('https://rocky-taiga-63970.herokuapp.com/posts?token=' + user.token, {
+    fetch('https://rocky-taiga-63970.herokuapp.com/posts', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -73,7 +79,7 @@ function sendMessage() {
 
         body: JSON.stringify({
             body: message,
-            //token: token
+            token: token
         })
     })
         .then(function(response) {

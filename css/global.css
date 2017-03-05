@@ -32,6 +32,11 @@ header #button-logout  {
     margin: 20px 20px 0px 0px;
 }
 
+header #tl-button-back,
+header #users-button-back {
+    margin-top: 20px;
+}
+
 .signup .panel-heading,
 .user-list .panel-heading,
 .message-list .panel-heading {
