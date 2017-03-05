@@ -43,16 +43,6 @@ function renderUsersList(users) {
     });
 }
 
-// function renderUsersList(users) {
-
-//     users.forEach(function(user) {
-//         console.log(user)
-//         var userList = `<li data-id="${user.id}" class="list-group-item">${user.first_name} ${user.last_name} @${user.username}</li>`;
-
-//         document.querySelector('#users').innerHTML += userList;
-//     });
-// }
-
 //target username within username box to input logged in user 
 function renderUserProfile() {
     document.querySelector('#profile-picture').src = user.photo_url;
