@@ -12,10 +12,20 @@ document.querySelector('#button-logout').addEventListener('click', function() {
     //sessionStorage.removeItem('token');
 });
 
+document.querySelector('#sendMessage').addEventListener('click', sendMessage);
+
+document.querySelector('#message').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+})
+
 renderUserProfile();
 getUsers();
 
 function getUsers() {
+    var token = sessionStorage.getItem('token');
+
     fetch('https://rocky-taiga-63970.herokuapp.com/users?token=' + user.token)
     .then(function(response) {
         return response.json();
@@ -47,4 +57,29 @@ function renderUsersList(users) {
 function renderUserProfile() {
     document.querySelector('#profile-picture').src = user.photo_url;
     document.querySelector('#username').innerHTML = user.username;
+}
+
+function sendMessage() {
+    var message = document.querySelector('#message').value;
+    var token = sessionStorage.getItem('token');
+
+    document.querySelector('#message').value = '';
+
+    fetch('https://rocky-taiga-63970.herokuapp.com/posts?token=' + 'token', {
+        headers: {
+            method: 'POST',
+            'Content-Type': 'application/json'
+        },
+
+        // body: JSON.stringify({
+        //     body: message,
+        //     token: token
+        // })
+    })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(response) {
+             console.log(response);
+         })
 }

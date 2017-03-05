@@ -22,6 +22,7 @@ POST /unfollow/:id (id is user id to be unfollowed)
 ^ This is for the Unfollow button
 
 GET /users (list of all users)
+-requires token
 - returns id, username, first_name, last_name, email, following (array of users the current_user is following), and followable (array of followers for current_user)
 - following and followable keys are id, username, and email
 
@@ -30,5 +31,6 @@ GET /users/:id (id is user whose profile you want)
 - following and followable are the same as above
 
 GET /posts/:id
+-requires token
 :id is user id of the user you want to find posts for
 see other user's posts
