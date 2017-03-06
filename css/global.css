@@ -53,8 +53,8 @@ header #users-button-back {
     margin: 20px;
 }
 
-#button-follow,
-#button-unfollow {
+.button-follow,
+.button-unfollow {
     padding: 1px 12px;
 }
 

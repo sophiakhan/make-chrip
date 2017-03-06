@@ -5,7 +5,7 @@ document.querySelector('#users').addEventListener('click', function(e) {
     var userList = e.target;
     var userId = userList.dataset.id;
     console.log(userList, userId)
-    // location.href = 'timeline.html';
+     location.href = 'timeline.html';
 });
 
 $('.list-group').css('cursor', 'pointer');
@@ -51,21 +51,57 @@ function renderUsersList(users) {
 
     users.forEach(function(user) {
         //console.log(user)
-        var userList = `<li data-id="${user.id}" class="list-group-item" id="users">
+        var userList = `<li data-id="${user.id}" class="list-group-item class">
         ${user.first_name} ${user.last_name} @${user.username} 
         <span class="pull-right">
-            <button type="button" class="btn btn-success" id="button-follow">Follow</button>
-            <button type="button" class="btn btn-danger" id="button-unfollow"><span class="glyphicon glyphicon-remove-circle"></span></button>
+            <button type="button" class="btn btn-success button-follow" data-id="${user.id}">Follow</button>
+            <button type="button" class="btn btn-danger button-unfollow" data-id="${user.id}"><span class="glyphicon glyphicon-remove-circle"></span></button>
         </span>
         
         </li>`;
 
         document.querySelector('#users').innerHTML += userList;
     });
+    
+$('.button-follow').on('click', follow)
+
+$('.button-unfollow').on('click', unfollow)
 }
 
+function follow() {
+    var userId = this.getAttribute('data-id');
 
+    fetch('https://rocky-taiga-63970.herokuapp.com/follow/' + userId, 
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
 
+        body: JSON.stringify({
+          token: user.token
+        })
+    });
+}
+
+document.getElementById(".button-follow").disabled = true;
+
+function unfollow() {
+    var userId = this.getAttribute('data-id');
+
+    fetch('https://rocky-taiga-63970.herokuapp.com/unfollow/' + userId, 
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+          token: user.token
+        })
+
+    });
+    }
 
 
 //target username within username box to input logged in user 
@@ -74,43 +110,6 @@ function renderUserProfile() {
     document.querySelector('#username').innerHTML = user.username;
 }
 
-//follow 
-
-document.querySelector('#button-follow').addEventListener('click', follow)
-
-function follow() {
-    var userIds = document.querySelector('#users').data-id
-
-    fetch('https://rocky-taiga-63970.herokuapp.com/follow/' + userIds), 
-    
-    {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-
-        .then(console.log(response))
-}
-}
-
-//unfollow 
-
-document.querySelector('#button-unfollow').addEventListener('click', unfollow)
-
-function unfollow() {
-    var userIds = document.querySelector('#users').data-id
-
-    fetch('https://rocky-taiga-63970.herokuapp.com/unfollow/' + userIds), 
-    
-    {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-
-        .then(console.log(response))
-}
-}
 
 // send chirp
 function sendMessage() {
