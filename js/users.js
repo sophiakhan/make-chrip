@@ -84,7 +84,7 @@ function follow() {
     });
 }
 
-document.getElementById(".button-follow").disabled = true;
+//document.getElementById(".button-follow").disabled = true;
 
 function unfollow() {
     var userId = this.getAttribute('data-id');
